@@ -21,6 +21,22 @@ function violationHunterAchievements(facts){
         : achieveConstantProgress(facts[WEIGHTED_VIOLATIONS],VIOLATION_HUNTER_MAP,CLUMSY_HUNTER_MAP);
 }
 
+var BOYSCOUT_1 = 'BOYSCOUT_1';
+var BOYSCOUT_2 = 'BOYSCOUT_2';
+var BOYSCOUT_3 = 'BOYSCOUT_3';
+var BOYSCOUT_4 = 'BOYSCOUT_4';
+var BOYSCOUT_MAP = [[1,BOYSCOUT_1],[5,BOYSCOUT_2],[10,BOYSCOUT_3],[25,BOYSCOUT_4]];
+var CARELESS_1 = 'CARELESS_1';
+var CARELESS_2 = 'CARELESS_2';
+var CARELESS_3 = 'CARELESS_3';
+var CARELESS_4 = 'CARELESS_4';
+var CARELESS_MAP = [[1,CARELESS_1],[2,CARELESS_2],[5,CARELESS_3],[10,CARELESS_4]];
+function boyscoutAchievements(facts){
+    return facts[VIOLATIONS_DENSITY]===undefined || facts[VIOLATIONS_DENSITY]===null
+        ? new Achieved()  
+        : achieveConstantProgress(facts[VIOLATIONS_DENSITY].reverse(), BOYSCOUT_MAP, CARELESS_MAP);
+}
+
 function achieveConstantProgress(history, achievementsMap, misAchievementsMap){
     achievementsMap.push(-1,'');
     var result = new Achieved();
@@ -57,21 +73,5 @@ function achieveConstantProgress(history, achievementsMap, misAchievementsMap){
     }
     result.cleansheet = clean;
     return result;
-}
-
-var BOYSCOUT_1 = 'BOYSCOUT_1';
-var BOYSCOUT_2 = 'BOYSCOUT_2';
-var BOYSCOUT_3 = 'BOYSCOUT_3';
-var BOYSCOUT_4 = 'BOYSCOUT_4';
-var BOYSCOUT_MAP = [[1,BOYSCOUT_1],[5,BOYSCOUT_2],[10,BOYSCOUT_3],[25,BOYSCOUT_4]];
-var CARELESS_1 = 'CARELESS_1';
-var CARELESS_2 = 'CARELESS_2';
-var CARELESS_3 = 'CARELESS_3';
-var CARELESS_4 = 'CARELESS_4';
-
-function boyscoutAchievements(facts){
-    return facts[VIOLATIONS_DENSITY]===undefined || facts[VIOLATIONS_DENSITY]===null
-        ? new Achieved()  
-        : achieveConstantProgress(facts[VIOLATIONS_DENSITY].reverse(), BOYSCOUT_MAP, []);
 }
 

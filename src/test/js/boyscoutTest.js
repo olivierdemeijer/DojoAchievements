@@ -49,3 +49,35 @@ describe("Boyscout achievements", function() {
         expect(achieved.list).toContain(BOYSCOUT_4);
     });
 });
+describe("Boyscout achievements", function() {
+    it("gives CARELESS level 1 when violations density regress 1 time ", function() {
+        var facts ={};
+        facts[VIOLATIONS_DENSITY]=floatTimesIncreased(1);
+      	var achieved = boyscoutAchievements(facts);
+        expect(achieved.list).toContain(BOYSCOUT_1);
+    });
+});
+describe("Boyscout achievements", function() {
+    it("gives CARELESS level 2 when violations density regress 2 times ", function() {
+        var facts ={};
+        facts[VIOLATIONS_DENSITY]=floatTimesIncreased(5);
+      	var achieved = boyscoutAchievements(facts);
+        expect(achieved.list).toContain(BOYSCOUT_2);
+    });
+});
+describe("Boyscout achievements", function() {
+    it("gives CARELESS level 3 when violations density regress 5 times ", function() {
+        var facts ={};
+        facts[VIOLATIONS_DENSITY]=floatTimesIncreased(10);
+      	var achieved = boyscoutAchievements(facts);
+        expect(achieved.list).toContain(BOYSCOUT_3);
+    });
+});
+describe("Boyscout achievements", function() {
+    it("gives CARELESS level 4 when violations density regress 10 times ", function() {
+        var facts ={};
+        facts[VIOLATIONS_DENSITY]=floatTimesIncreased(25);
+      	var achieved = boyscoutAchievements(facts);
+        expect(achieved.list).toContain(BOYSCOUT_4);
+    });
+});
