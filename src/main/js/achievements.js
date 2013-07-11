@@ -13,13 +13,15 @@ var CLUMSY_HUNTER_2 = 'CLUMSY_HUNTER_2';
 var CLUMSY_HUNTER_3 = 'CLUMSY_HUNTER_3';
 var CLUMSY_HUNTER_4 = 'CLUMSY_HUNTER_4';
 var CLUMSY_HUNTER_MAP = [[1,CLUMSY_HUNTER_1], [2,CLUMSY_HUNTER_2], [5,CLUMSY_HUNTER_3], [10,CLUMSY_HUNTER_4]];
+
+
 function violationHunterAchievements(facts){
     return facts[WEIGHTED_VIOLATIONS]===undefined || facts[WEIGHTED_VIOLATIONS]===null
         ? new Achieved()  
-        : achieveConstantReduction(facts[WEIGHTED_VIOLATIONS],VIOLATION_HUNTER_MAP,CLUMSY_HUNTER_MAP);
+        : achieveConstantProgress(facts[WEIGHTED_VIOLATIONS],VIOLATION_HUNTER_MAP,CLUMSY_HUNTER_MAP);
 }
 
-function achieveConstantReduction(history, achievementsMap, misAchievementsMap){
+function achieveConstantProgress(history, achievementsMap, misAchievementsMap){
     achievementsMap.push(-1,'');
     var result = new Achieved();
     var targetAchievement = 0;
@@ -55,5 +57,21 @@ function achieveConstantReduction(history, achievementsMap, misAchievementsMap){
     }
     result.cleansheet = clean;
     return result;
+}
+
+var BOYSCOUT_1 = 'BOYSCOUT_1';
+var BOYSCOUT_2 = 'BOYSCOUT_2';
+var BOYSCOUT_3 = 'BOYSCOUT_3';
+var BOYSCOUT_4 = 'BOYSCOUT_4';
+var BOYSCOUT_MAP = [[1,BOYSCOUT_1],[5,BOYSCOUT_2],[10,BOYSCOUT_3],[25,BOYSCOUT_4]];
+var CARELESS_1 = 'CARELESS_1';
+var CARELESS_2 = 'CARELESS_2';
+var CARELESS_3 = 'CARELESS_3';
+var CARELESS_4 = 'CARELESS_4';
+
+function boyscoutAchievements(facts){
+    return facts[VIOLATIONS_DENSITY]===undefined || facts[VIOLATIONS_DENSITY]===null
+        ? new Achieved()  
+        : achieveConstantProgress(facts[VIOLATIONS_DENSITY].reverse(), BOYSCOUT_MAP, []);
 }
 
