@@ -1,0 +1,2 @@
+java -jar jstestdriver/JsTestDriver-1.3.5.jar --port 9876 --tests all --browser "d:\Users\odemeije\AppData\Local\Google\Chrome\Application\chrome.exe" --testOutput target/jstestdriver --config jstestdriver/jsTestDriver.conf
+sonar-runner
