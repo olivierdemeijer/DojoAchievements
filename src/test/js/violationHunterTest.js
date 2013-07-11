@@ -4,6 +4,7 @@ describe("ViolationHunter achievements", function() {
         facts[WEIGHTED_VIOLATIONS]=null;
       	var achieved = violationHunterAchievements(facts);
         expect(achieved.list.length).toEqual(0);
+        expect(achieved.cleansheet).toBeFalsy();
     });
 });
 describe("ViolationHunter achievements", function() {
@@ -12,6 +13,7 @@ describe("ViolationHunter achievements", function() {
         facts[WEIGHTED_VIOLATIONS]=undefined;
         var achieved = violationHunterAchievements(facts);
         expect(achieved.list.length).toEqual(0);
+        expect(achieved.cleansheet).toBeFalsy();
     });
 });
 function timesReduced (times){
