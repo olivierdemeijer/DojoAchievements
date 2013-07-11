@@ -16,21 +16,7 @@ describe("ViolationHunter achievements", function() {
         expect(achieved.cleansheet).toBeFalsy();
     });
 });
-function intTimesIncreased (times){
-  var result = [];
-  for (var i=0;i<=times;i++){
-    result.push(i);
-  }
-  return result;
-}
 
-function intTimesReduced (times){
-	var result = [];
-	for (var i=times;i>=0;i--){
-		result.push(i);
-	}
-	return result;
-}
 describe("ViolationHunter achievements", function() {
     it("gives VIOLATION_HUNTER level 1 when weighted violations reduced 2 times in a row", function() {
         var facts ={};
@@ -78,6 +64,14 @@ describe("ViolationHunter achievements", function() {
         facts[WEIGHTED_VIOLATIONS]=[0,0,0];
         var achieved = violationHunterAchievements(facts);
         expect(achieved.cleansheet).toBeTruthy();
+    });
+});
+describe("ViolationHunter achievements", function() {
+    it("gives no cleansheet when there less than 2 elements in facts", function() {
+        var facts ={};
+        facts[WEIGHTED_VIOLATIONS]=[0];
+        var achieved = violationHunterAchievements(facts);
+        expect(achieved.cleansheet).toBeFalsy();
     });
 });
 describe("ViolationHunter achievements", function() {

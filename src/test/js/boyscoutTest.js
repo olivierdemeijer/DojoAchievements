@@ -16,6 +16,22 @@ describe("Boyscout achievements", function() {
         expect(achieved.cleansheet).toBeFalsy();
     });
 });
+describe("Boyscout achievements", function() {
+    it("gives no cleansheet when there less than 2 elements in facts", function() {
+        var facts ={};
+        facts[VIOLATIONS_DENSITY]=[0];
+        var achieved = boyscoutAchievements(facts);
+        expect(achieved.cleansheet).toBeFalsy();
+    });
+});
+describe("Boyscout achievements", function() {
+    it("miss cleansheet when weighted violations increased at least 1 time ", function() {
+        var facts ={};
+        facts[VIOLATIONS_DENSITY]=[0,0,1,0];
+        var achieved = boyscoutAchievements(facts);
+        expect(achieved.cleansheet).toBeFalsy();
+    });
+});
 
 describe("Boyscout achievements", function() {
     it("gives BOYSCOUT level 1 when violations density progress 1 time ", function() {

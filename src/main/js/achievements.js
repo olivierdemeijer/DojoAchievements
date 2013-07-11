@@ -71,7 +71,15 @@ function achieveConstantProgress(history, achievementsMap, misAchievementsMap){
             timesIncreased=0;   
         }
     }
-    result.cleansheet = clean;
+    result.cleansheet = history.length>1 ? clean : false;
     return result;
 }
 
+function refactoringAchievements(facts){
+    var boyscout = boyscoutAchievements(facts);
+    var violationHunter = violationHunterAchievements(facts);
+    var result = new Achieved();
+    result.list=[].concat(boyscout.list,violationHunter.list);
+    result.cleansheet= boyscout.cleansheet && violationHunter.cleansheet;
+    return result;
+}
